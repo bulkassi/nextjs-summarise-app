@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export const Header = () => {
   return (
-    <header className="flex justify-center items-center">
+    <header className="h-[5vh] w-screen shadow-xl/8 flex justify-center items-center">
       <nav className="flex flex-row gap-4">
         <Link className="text-gray-500" href="/summarize">
           New Summary

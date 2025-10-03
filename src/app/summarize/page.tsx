@@ -8,13 +8,13 @@ export default function Summarize() {
   const [url, setUrl] = useState("");
 
   return (
-    <div>
+    <div className="w-[60vw] flex gap-2">
       <Input
         value={url}
         onChange={(ev) => {
           setUrl(ev.target.value);
         }}
-      ></Input>
+      />
       <Button>Summarize</Button>
     </div>
   );
