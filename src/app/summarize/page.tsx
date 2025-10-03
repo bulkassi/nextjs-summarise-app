@@ -8,14 +8,15 @@ export default function Summarize() {
   const [url, setUrl] = useState("");
 
   return (
-    <div className="w-[60vw] flex gap-2">
+    <div className="flex flex-row justify-center items-center gap-2">
       <Input
         value={url}
         onChange={(ev) => {
           setUrl(ev.target.value);
         }}
+        className="w-6/10"
       />
-      <Button>Summarize</Button>
+      <Button className="w-30">Summarize</Button>
     </div>
   );
 }
