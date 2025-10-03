@@ -1,3 +1,21 @@
+"use client";
+
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { useState } from "react";
+
 export default function Summarize() {
-  return <div>Summarize page</div>;
+  const [url, setUrl] = useState("");
+
+  return (
+    <div>
+      <Input
+        value={url}
+        onChange={(ev) => {
+          setUrl(ev.target.value);
+        }}
+      ></Input>
+      <Button>Summarize</Button>
+    </div>
+  );
 }
