@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Loader2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -12,31 +12,20 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { useSummarization } from "@/context/SummarizationContext";
 
 export default function Home() {
   const [url, setUrl] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    if (!isLoading) {
-      return;
-    }
-
-    const timeout = window.setTimeout(() => {
-      setIsLoading(false);
-    }, 1800);
-
-    return () => window.clearTimeout(timeout);
-  }, [isLoading]);
+  const { isSummarizing, startSummarization } = useSummarization();
 
   return (
     <div className="flex min-h-[calc(100dvh-8rem)] w-full items-center justify-center px-4 py-12">
       <div className="w-full max-w-2xl">
         <div className="relative">
           <Card
-            aria-busy={isLoading}
+            aria-busy={isSummarizing}
             className={`transition-opacity ${
-              isLoading ? "pointer-events-none opacity-60" : ""
+              isSummarizing ? "pointer-events-none opacity-60" : ""
             }`}
           >
             <CardHeader>
@@ -48,12 +37,12 @@ export default function Home() {
             <CardContent>
               <form
                 className="flex flex-col gap-4 sm:flex-row"
-                onSubmit={(event) => {
+                onSubmit={async (event) => {
                   event.preventDefault();
-                  if (!url.trim() || isLoading) {
+                  if (!url.trim() || isSummarizing) {
                     return;
                   }
-                  setIsLoading(true);
+                  await startSummarization(url);
                 }}
               >
                 <Input
@@ -62,20 +51,20 @@ export default function Home() {
                   placeholder="https://www.youtube.com/watch?v=..."
                   className="h-11 flex-1"
                   aria-label="Video URL"
-                  disabled={isLoading}
+                  disabled={isSummarizing}
                   required
                 />
                 <Button
                   type="submit"
                   className="h-11 sm:w-auto"
-                  disabled={!url.trim() || isLoading}
+                  disabled={!url.trim() || isSummarizing}
                 >
-                  {isLoading ? "Processing" : "Summarise"}
+                  {isSummarizing ? "Processing" : "Summarise"}
                 </Button>
               </form>
             </CardContent>
           </Card>
-          {isLoading ? (
+          {isSummarizing ? (
             <div className="absolute inset-0 z-10 flex items-center justify-center rounded-xl bg-background/70 backdrop-blur">
               <Loader2
                 className="size-10 animate-spin text-primary"

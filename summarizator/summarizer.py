@@ -79,3 +79,4 @@ def summarize_pipeline(task_id: int, url: str):
     transcript = transcribe_audio_wisper(audio_path)
     summary = summarize_text(transcript)
     print(f'Summary {task_id} for {url}: {summary}')
+    return summary

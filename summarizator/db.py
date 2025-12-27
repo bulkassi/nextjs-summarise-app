@@ -17,7 +17,8 @@ class Summary(Base):
     __tablename__ = "summaries"
     id = Column(Integer, primary_key=True, index=True)
     url = Column(String, nullable=False)
-    summary = Column(Text, nullable=False, default="")
+    summary = Column(Text, nullable=True, default="")
+    status = Column(String, default="pending")
     created_at = Column(DateTime, default = datetime.datetime.utcnow)
 
 def init_db():
