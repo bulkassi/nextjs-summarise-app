@@ -2,7 +2,6 @@ This project was created during the completion of the Web-development semester c
 
 In summarization pipeline, [this model](https://huggingface.co/2KKLabs/Lacia_sum_small_v1) for transcribing an audio track retrieved from a video.
 
-If you want to run the application in dev mode:
 To launch Next.js dev server run
 ```
 npm run dev
