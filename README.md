@@ -1,6 +1,6 @@
 This project was created during the completion of the Web-development semester curriculum. It involved creating a summarization app using Next.js (+ Shadcn) for interface, FastAPI server and SQLite for database management. 
 
-In summarization pipeline, [this model](https://huggingface.co/2KKLabs/Lacia_sum_small_v1) for transcribing an audio track retrieved from a video.
+In summarization pipeline, [this model](https://huggingface.co/2KKLabs/Lacia_sum_small_v1) is used for transcribing an audio track retrieved from a video.
 
 To launch Next.js dev server run
 ```
