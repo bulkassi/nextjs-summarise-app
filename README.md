@@ -11,7 +11,7 @@ For FastAPI dev server, firstly create and enter a virtual environment, then ins
 ```
 pip install yt-dlp moviepy ffmpeg transformers[sentencepiece] faster-whisper torch
 ```
-To laucnh it inside venv (assuming you are inside the `nextjs-summarise-app/summarizator`) run
+To launch it inside venv (assuming you are inside the `nextjs-summarise-app/summarizator`) run
 ```
 fastapi dev main.py
 ```
